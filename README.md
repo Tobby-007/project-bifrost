@@ -50,13 +50,10 @@ Design decisions worth naming:
 **1. Small companies rarely need cloud infrastructure for internal reporting.**
 Apps Script inside the team's existing Google Workspace outperformed a Lambda-based alternative for this use case: no infrastructure cost, no deployment complexity, native trigger management. The right tool is often the boring one.
 
-**2. TikTok's `shop_id invalid` error remains unresolved despite escalation.**
-The TikTok Shop API returned `shop_id invalid` errors for our production shop_id despite valid credentials. Support escalation is ongoing. In the interim, TikTok data is pulled manually. Named this openly rather than hiding the gap.
-
-**3. Rate limit strategy differs meaningfully by platform.**
+**2. Rate limit strategy differs meaningfully by platform.**
 Shopify's REST API is lenient. Shopify's GraphQL API uses a cost-based bucket model. Amazon SP-API applies per-endpoint rate limits with token bucket refill. ShipHero uses a 400 credits per minute model. A generic "back off on 429" implementation would have worked poorly. Each platform got its own strategy.
 
-**4. Documentation is part of the deliverable.**
+**3. Documentation is part of the deliverable.**
 Every function has inline documentation. Every workflow has a run book. Every error has a resolution path documented. When I move on, the next person can operate this without me.
 
 ## What's Next
